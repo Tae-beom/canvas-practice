@@ -236,8 +236,8 @@ function getModeParams(mode) {
           양 끝단(서/동)은 더욱 진하게 보이도록 끝단 대비 강화
        ※ 구름: 평상시처럼 서태평양에 유지
     */
-    const westY = 330;      // 서쪽 수온약층 y (평상시 300보다 더 깊게)
-    const eastY = 170;      // 동쪽 수온약층 y (평상시 200보다 더 얕게)
+    const westY = 310;      // 서쪽 수온약층 y (평상시 300보다 더 깊게)
+    const eastY = 160;      // 동쪽 수온약층 y (평상시 200보다 더 얕게)
     const upwellTail = { x: 660, y: 300 }; // 꼬리(고정, 평상시와 동일)
     const upwellHeadY = 170;               // ★ 표층 근처까지 올림(강한 용승)
 
@@ -312,11 +312,11 @@ function drawBase(){
   ctx.fillStyle = grad;
   ctx.fillRect(0, 140, 700, 10);
 
-  // 수온편차 텍스트
+  // 표층 해수 텍스트
   ctx.font = "14px Arial";
   ctx.fillStyle = "black";
   ctx.textAlign = "center";
-  ctx.fillText("수온편차", 350, 130);
+  ctx.fillText("표층 해수", 350, 150);
 
   // Thermocline (수온약층) — 모드별 선분 사용
   ctx.beginPath();
@@ -332,7 +332,7 @@ function drawBase(){
   const midY = (P.thermo.west.y + P.thermo.east.y)/2;
   const angle = Math.atan2(P.thermo.east.y - P.thermo.west.y,
                            P.thermo.east.x - P.thermo.west.x);
-  ctx.translate(midX, midY - 10);
+  ctx.translate(midX, midY + 15);
   ctx.rotate(angle);
   ctx.font = "14px Arial";
   ctx.fillStyle = "black";
